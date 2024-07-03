@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 
-const CTRL = require("../../../bin/controller/UserController.js");
+const CTRL = require("../../controller/UserController");
 
 router.get("/", CTRL.output.login);
 router.get("/Sign", CTRL.output.sign);
