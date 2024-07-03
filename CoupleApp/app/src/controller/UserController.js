@@ -1,32 +1,26 @@
-const output ={
-     login : (req,res) => {
+const output = {
+    login: (req, res) => {
         res.render("home/login");
     },
-    
-     sign : (req,res) => {
+
+    sign: (req, res) => {
         res.render("home/sign");
     }
 };
 
-const UserVO = require("../../src/VO/UserVO");
+const UserService = require("../Service/UserService");
 
 const input = {
-    login : (req,res) => {
-       const id = req.body.id;
-       const pw = req.body.pw;
-        
-       const users = UserVO.getUsers("id","pw","name");
-       const response = {};
-        if(users.id.includes(id)){ //includes() : 포함 한다면
-            const idx = users.id.indexOf(id);
-            if(users.pw[idx] === pw){
-                response.success = true;
-                return res.json(response);
-            }
-        }
-
-        response.success = false;
-        response.msg = "로그인에 실패하였습니다";
+    login: (req, res) => {
+        const user = new UserService(req.body);
+        const response = user.login();
+        console.log(response);
+        return res.json(response);
+    },
+    sign: (req, res) => {
+        const user = new UserService(req.body);
+        const response = user.sign();
+        console.log(response);
         return res.json(response);
     },
 };

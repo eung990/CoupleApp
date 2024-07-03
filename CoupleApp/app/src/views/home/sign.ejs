@@ -1,34 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <title>Sign Up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/login.css">
+  <script src="/js/home/sign.js" defer></script>
+  <title>Login</title>
 </head>
 
 <body>
-    <h1>Sign Up</h1>
-    <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
-        <br>
-        <label>
-            <input type="checkbox" name="agree-to-terms" required>
-            I agree to the <a href="/terms-of-service" target="_blank">Terms of Service</a> and <a
-                href="/privacy-policy" target="_blank">Privacy Policy</a>.
-        </label>
-        <br>
-        <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="/login">Log In</a></p>
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form">
+        <input id="email" type="text" placeholder="이메일"/>
+        <input id="name" type="text" placeholder="이름"/>
+        <input id="id" type="text" placeholder="아이디"/>
+        <input id="pw" type="password" placeholder="비밀번호"/>
+        <input id="re-pw" type="password" placeholder="비밀번호 확인"/>
+        <p id="button">sign</p>
+        <p class="message">Already Sign? <a href="/">login</a></p>
+      </form>
+    </div>
+  </div>
 </body>
-
+</body>
 </html>
+
+<!-- Copyright (c) 2024 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-->
