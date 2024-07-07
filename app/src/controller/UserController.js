@@ -14,6 +14,7 @@ const output = {
     },
 
     session: async (req, res) => {
+        //세션은 한 번 등록 시 재사용 가능하다 다만 서버 재부팅 시 로그인 부터 진행해야 뜸
         const u_id = await req.session.u_id;
         const coupleURL = await req.session.coupleURL;
         const userInfo = {
@@ -32,6 +33,7 @@ const UserService = require("../Service/UserService");
 
 const input = {
     login: async (req, res) => {
+        try{
         const user = new UserService(req.body);
         const response = await user.login();
         if (response.success) {
@@ -43,6 +45,9 @@ const input = {
             return res.json(response);
             
         } 
+    }catch(err){
+        console.log(new Error("UserCOntroller.js.input.login()에서 오류 발생"));
+    }
 
         
     },
