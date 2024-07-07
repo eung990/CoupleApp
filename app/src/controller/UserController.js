@@ -8,8 +8,25 @@ const output = {
     },
     board: (req, res) => {
         res.render("home/board");
+    },
+    Map: (req, res) => {
+        res.render("home/Map");
+    },
+
+    session: async (req, res) => {
+        const u_id = await req.session.u_id;
+        const coupleURL = await req.session.coupleURL;
+        const userInfo = {
+            u_id : u_id,
+            coupleURL : coupleURL
+        };
+        console.log(userInfo);
+        
+        return res.json(userInfo);
+        
     }
 };
+
 
 const UserService = require("../Service/UserService");
 
@@ -17,8 +34,17 @@ const input = {
     login: async (req, res) => {
         const user = new UserService(req.body);
         const response = await user.login();
-        console.log(response);
-        return res.json(response);
+        if (response.success) {
+            req.session.u_id = response.u_id;
+            req.session.coupleURL = response.coupleURL;
+            console.log(req.session.u_id);
+            console.log(req.session.coupleURL);
+    
+            return res.json(response);
+            
+        } 
+
+        
     },
     sign: async (req, res) => {
         const user = new UserService(req.body);

@@ -8,33 +8,34 @@ const loginBtn = document.querySelector("#button");
 loginBtn.addEventListener("click", login);
 
 async function login() {
-    const req = {
-        u_id: u_id.value,
-        u_pw: u_pw.value,
-    };
-  
-    try {
-      const res = await fetch("/board", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(req),
-      });
-  
-      const response = await res.json();
-  
-      if (response.success) {
-        console.log("로그인 완료");
-        location.href = "/board";
-      } else {
-        console.log("로그인 실패");
-        alert(response.msg);
-      }
-    } catch (err) {
-      console.log(new Error("로그인 중 오류 발생"));
+  const req = {
+    u_id: u_id.value,
+    u_pw: u_pw.value,
+  };
+
+  try {
+    //fetch로 요청을 보낸 값을 res에 담음
+    const res = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(req),
+    });
+
+    const response = await res.json();
+
+    if (response.success) {
+      console.log("로그인 완료");
+
+      location.href = "/board";
+    } else {
+      console.log("로그인 실패");
+      alert(response.msg);
     }
-  
-    console.log("JSON 문자열 변환 ==>" + JSON.stringify(req));
+  } catch (err) {
+    console.log(new Error("로그인 중 오류 발생"));
   }
-  
+
+  console.log("JSON 문자열 변환 ==>" + JSON.stringify(req));
+};
